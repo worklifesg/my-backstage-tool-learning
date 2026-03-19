@@ -1,0 +1,19 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: sample-app
+  description: Sample Nginx app managed by Argo CD
+  annotations:
+    argocd/app-name: sample-app
+  tags:
+    - nginx
+    - argocd
+  links:
+    - url: https://localhost:8443
+      title: Argo CD Dashboard
+      icon: cloud
+spec:
+  type: service
+  lifecycle: production
+  owner: guests
+  system: examples

@@ -1,0 +1,20 @@
+# catalog-info.yaml for the auth-service component
+# Demo: Registering a Component in Backstage Catalog
+# Reference: https://notes.kodekloud.com/docs/Prep-Course-Certified-Backstage-Associate-CBA-Certification/Catalog/Demo-Registering-a-Component/page
+---
+apiVersion: backstage.io/v1beta1
+kind: Component
+metadata:
+  name: auth-service
+  description: Authentication service
+  tags:
+    - javascript
+  links:
+    - url: https://admin.example-org.com
+      title: Admin Dashboard
+      icon: dashboard
+      type: admin-dashboard
+spec:
+  type: service
+  lifecycle: production
+  owner: guests

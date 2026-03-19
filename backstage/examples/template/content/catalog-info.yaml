@@ -1,8 +1,16 @@
-apiVersion: backstage.io/v1alpha1
+apiVersion: backstage.io/v1beta1
 kind: Component
 metadata:
-  name: ${{ values.name | dump }}
+  name: auth-service
+  description: Authentication service
+  tags:
+    - javascript
+  links:
+    - url: https://admin.example-org.com
+      title: Admin Dashboard
+      icon: dashboard
+      type: admin-dashboard
 spec:
   type: service
-  owner: user:guest
-  lifecycle: experimental
+  lifecycle: production
+  owner: guests

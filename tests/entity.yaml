@@ -65,3 +65,51 @@ spec:
   type: database
   owner: group:default/ecommerce
   system: purchasing
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: shopping-cart-api
+  description: API for the shopping cart component
+spec:
+  type: openapi
+  owner: user:default/alice
+  apiProvidedBy: shopping-cart
+  definition: |
+    openapi: "3.0.0"
+    info:
+      version: 1.0.0
+      title: Artist API
+      license:
+        name: MIT
+    servers:
+      - url: http://artist.spotify.net/v1
+    paths:
+      /artists:
+        get:
+          summary: List all artists
+    ...
+---
+#Create simialr API for inventory-service
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: inventory-service-api
+  description: API for the inventory service component
+spec:
+  type: openapi
+  owner: group:default/ecommerce
+  apiProvidedBy: inventory-service 
+  definition: |
+    openapi: "3.0.0"
+    info:
+      version: 1.0.0
+      title: Inventory Service API
+      license:
+        name: MIT
+    servers:
+      - url: http://inventory-service.spotify.net/v1
+    paths:
+      /inventory:
+        get:
+          summary: List all inventory items

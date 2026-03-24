@@ -1,0 +1,9 @@
+site_name: ${{ values.title }}
+site_description: ${{ values.description or ('Learning notes for ' + values.title) }}
+nav:
+  - Home: docs/index.md
+  - Getting Started: docs/getting-started.md
+  - Concepts: docs/concepts.md
+  - Notes: docs/notes.md
+plugins:
+  - techdocs-core

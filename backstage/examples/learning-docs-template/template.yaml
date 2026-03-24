@@ -1,0 +1,83 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: learning-techdocs-template
+  title: Learning TechDocs Template
+  description: Scaffold a documentation-focused Backstage component with starter TechDocs content for learning notes and guides.
+spec:
+  owner: user:guest
+  type: documentation
+  parameters:
+    - title: Document Details
+      required:
+        - name
+        - title
+        - owner
+      properties:
+        name:
+          title: Name
+          type: string
+          description: Unique component name for the learning docs project
+          pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'
+          ui:autofocus: true
+        title:
+          title: Document Title
+          type: string
+          description: Human-readable title shown in TechDocs
+        description:
+          title: Description
+          type: string
+          description: Short summary of what this learning document covers
+        owner:
+          title: Owner
+          type: string
+          description: Catalog entity reference for the owning user or group
+          default: group:default/ecommerce
+        topic:
+          title: Learning Topic
+          type: string
+          description: Main topic area for the document
+          default: backstage-learning
+    - title: Repository Location
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
+  steps:
+    - id: fetch-base
+      name: Fetch Base
+      action: fetch:template
+      input:
+        url: ./content
+        values:
+          name: ${{ parameters.name }}
+          title: ${{ parameters.title }}
+          description: ${{ parameters.description }}
+          owner: ${{ parameters.owner }}
+          topic: ${{ parameters.topic }}
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        description: ${{ parameters.description or parameters.title }}
+        repoUrl: ${{ parameters.repoUrl }}
+        defaultBranch: main
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
+        catalogInfoPath: /catalog-info.yaml
+  output:
+    links:
+      - title: Repository
+        url: ${{ steps['publish'].output.remoteUrl }}
+      - title: Open in catalog
+        icon: catalog
+        entityRef: ${{ steps['register'].output.entityRef }}

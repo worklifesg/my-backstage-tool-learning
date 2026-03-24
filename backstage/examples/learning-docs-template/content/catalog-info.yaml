@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ${{ values.name }}
+  title: ${{ values.title }}
+  description: ${{ values.description or ('Learning documentation for ' + values.title) }}
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - docs
+    - learning
+    - ${{ values.topic }}
+spec:
+  type: documentation
+  lifecycle: experimental
+  owner: ${{ values.owner }}

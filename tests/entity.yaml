@@ -1,4 +1,16 @@
 apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: purchasing
+  description: The purchasing system responsible for handling orders and payments.
+spec:
+  owner: group:default/ecommerce
+  lifecycle: production
+  type: system
+  # domain: artists
+
+---
+apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: shopping-cart
@@ -8,6 +20,7 @@ spec:
   type: website
   lifecycle: production
   owner: user:default/alice
+  system: purchasing
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -17,6 +30,7 @@ spec:
   type: service
   lifecycle: production
   owner: group:default/ecommerce
+  system: purchasing
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Group

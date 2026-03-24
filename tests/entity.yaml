@@ -34,6 +34,8 @@ kind: Component
 metadata:
   name: inventory-service
 spec:
+  dependsOn:
+    - resource:default/inventory-db
   type: service
   lifecycle: production
   owner: group:default/ecommerce
@@ -53,3 +55,13 @@ metadata:
   name: alice
 spec:
   memberOf: [group:default/ecommerce]
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: inventory-db
+  description: Database resource for inventory service
+spec:
+  type: database
+  owner: group:default/ecommerce
+  system: purchasing

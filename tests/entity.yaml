@@ -4,10 +4,10 @@ metadata:
   name: shopping-cart
 spec:
   dependsOn:
-    - component: inventory-service
+    - component:default/inventory-service
   type: website
   lifecycle: production
-  owner: user:alice
+  owner: user:default/alice
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -16,7 +16,7 @@ metadata:
 spec:
   type: service
   lifecycle: production
-  owner: ecommerce
+  owner: group:default/ecommerce
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Group
@@ -31,4 +31,4 @@ kind: User
 metadata:
   name: alice
 spec:
-  memberOf: [ecommerce]
+  memberOf: [group:default/ecommerce]

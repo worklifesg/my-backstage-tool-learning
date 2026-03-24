@@ -113,3 +113,4 @@ spec:
       /inventory:
         get:
           summary: List all inventory items
+    ...

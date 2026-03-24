@@ -3,9 +3,20 @@ kind: Component
 metadata:
   name: shopping-cart
 spec:
+  dependsOn:
+    - component: inventory-service
   type: website
   lifecycle: production
   owner: user:alice
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: inventory-service
+spec:
+  type: service
+  lifecycle: production
+  owner: ecommerce
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Group

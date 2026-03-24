@@ -75,6 +75,7 @@ spec:
   type: openapi
   owner: user:default/alice
   apiProvidedBy: shopping-cart
+  lifecycle: production
   definition: |
     openapi: "3.0.0"
     info:
@@ -100,6 +101,7 @@ spec:
   type: openapi
   owner: group:default/ecommerce
   apiProvidedBy: inventory-service 
+  lifecycle: production
   definition: |
     openapi: "3.0.0"
     info:

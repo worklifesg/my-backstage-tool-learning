@@ -21,3 +21,12 @@ metadata:
   name: alice
 spec:
   memberOf: [ecommerce]
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: shopping-cart2
+spec:
+  type: website
+  lifecycle: production
+  owner: user:alice

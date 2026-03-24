@@ -57,6 +57,11 @@ import {
   EntityKubernetesContent,
   isKubernetesAvailable,
 } from '@backstage/plugin-kubernetes';
+import {
+  ArgocdDeploymentLifecycle,
+  ArgocdDeploymentSummary,
+  isArgocdConfigured,
+} from '@backstage-community/plugin-argocd';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -159,6 +164,21 @@ const serviceEntityPage = (
       if={isKubernetesAvailable}
     >
       <EntityKubernetesContent />
+    </EntityLayout.Route>
+
+    <EntityLayout.Route
+      path="/argocd"
+      title="Argo CD"
+      if={isArgocdConfigured}
+    >
+      <Grid container spacing={3} alignItems="stretch">
+        <Grid item md={12}>
+          <ArgocdDeploymentSummary />
+        </Grid>
+        <Grid item md={12}>
+          <ArgocdDeploymentLifecycle />
+        </Grid>
+      </Grid>
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/api" title="API">

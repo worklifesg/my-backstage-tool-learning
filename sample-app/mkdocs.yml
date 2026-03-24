@@ -1,0 +1,15 @@
+site_name: sample-app
+site_description: Backstage + ArgoCD Integration - Deployment Docs & Learning Guide
+nav:
+  - Home: index.md
+  - Deployment:
+      - Overview: deployment/overview.md
+      - Architecture: deployment/architecture.md
+      - Setup Steps: deployment/setup-steps.md
+  - ArgoCD-Backstage Integration:
+      - How It Works: integration/how-it-works.md
+      - Files & Associations: integration/files-and-associations.md
+      - Plugin Configuration: integration/plugin-configuration.md
+      - Troubleshooting: integration/troubleshooting.md
+plugins:
+  - techdocs-core

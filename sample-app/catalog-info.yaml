@@ -5,6 +5,7 @@ metadata:
   description: Sample Nginx app managed by Argo CD
   annotations:
     argocd/app-name: sample-app
+    backstage.io/techdocs-ref: dir:.
   tags:
     - nginx
     - argocd

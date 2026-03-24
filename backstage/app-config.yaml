@@ -83,8 +83,15 @@ catalog:
       target: ../../examples/entities.yaml
 
     # Demo: auth-service component (Registering a Component demo)
-    - type: file
-      target: ../../examples/auth-entity.yaml
+    #- type: file
+    #  target: ../../examples/auth-entity.yaml
+
+    - type: url
+      target: https://raw.githubusercontent.com/worklifesg/my-backstage-tool-learning/main/backstage/examples/template/content/catalog-info.yaml
+      rules:
+        - allow: [Component, System, API, Resource, Location]
+
+
 
     # Local example template
     - type: file
